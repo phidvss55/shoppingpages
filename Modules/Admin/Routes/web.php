@@ -13,4 +13,9 @@
 
 Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index');
+
+    Route::group(['prefix' => 'category'], function() {
+        Route::get('/', 'AdminCategoryController@index')->name('admin.get.list.category');
+        Route::get('/create', 'AdminCategoryController@create')->name('admin.get.create.category');
+    });
 });
