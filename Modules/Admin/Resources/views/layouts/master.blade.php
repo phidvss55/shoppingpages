@@ -54,7 +54,7 @@
                             <a href="{{ route('admin.home') }}"> Trang Tổng Quan </a>
                         </li>
                         <li><a href="{{ route('admin.get.list.category') }}"> Danh Mục </a></li>
-                        <li><a href="#"> Sản Phẩm </a></li>
+                        <li><a href="{{ route('admin.get.list.product') }}"> Sản Phẩm </a></li>
                         <li><a href="#"> Tin Tức </a></li>
                         <li><a href="#"> Đơn Hàng </a></li>
                         <li><a href="#"> Thành Viên </a></li>
