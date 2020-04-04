@@ -11,7 +11,7 @@
         
         <link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/dashboard/">
 
-        <title>Dashboard Template for Bootstrap</title>
+        <title> Admin System </title>
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('theme_admin/css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -51,7 +51,7 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li class="active">
-                            <a href="#"> Trang Tổng Quan </a>
+                            <a href="{{ route('admin.home') }}"> Trang Tổng Quan </a>
                         </li>
                         <li><a href="{{ route('admin.get.list.category') }}"> Danh Mục </a></li>
                         <li><a href="#"> Sản Phẩm </a></li>
