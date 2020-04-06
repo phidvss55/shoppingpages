@@ -12,10 +12,16 @@ use Illuminate\Routing\Controller;
 
 class AdminProductController extends Controller
 {
-    public function index() {
-        $products = Product::paginate(10);
+    public function index(Request $request) {
+        $products = Product::with('category:id,c_name');
+        if( $request->name) $products->where('pro_name', 'like', '%' . $request->name . '%');
+        if( $request->cate) $products->where('pro_category_id', $request->cate);
+        $products = $products->orderByDesc('id')->paginate(10);
+        $categories = $this->getCategories();
+
         $viewData = [
             'products' => $products,
+            'categories' => $categories
         ];
 
         // dd($viewData);
@@ -40,6 +46,27 @@ class AdminProductController extends Controller
 
     public function update(RequestProduct $requestProduct, $id) {
         $this->insertOrUpdate($requestProduct, $id);
+        return redirect()->back();
+    }
+    
+    public function action($action, $id) {
+        if($action) {
+            $product = Product::findOrFail($id);
+            switch($action) {
+                case 'delete':
+                    $product->delete();
+                    break;
+                case 'active':
+                    $product->pro_active = $product->pro_active ? 0 : 1;
+                    break;
+                case 'hot':
+                    $product->pro_hot = $product->pro_hot ? 0 : 1;
+                    break;
+                default:
+                    break;
+            }
+            $product->save();
+        }
         return redirect()->back();
     }
 

@@ -20,7 +20,6 @@ Route::prefix('admin')->group(function() {
         Route::post('/create', 'AdminCategoryController@store');
         Route::get('/update/{id}', 'AdminCategoryController@edit')->name('admin.get.edit.category');
         Route::post('/update/{id}', 'AdminCategoryController@update');
-        
         Route::get('{action}/{id}', 'AdminCategoryController@action')->name('admin.get.action.category');
     });
 
@@ -30,7 +29,15 @@ Route::prefix('admin')->group(function() {
         Route::post('/create', 'AdminProductController@store');
         Route::get('/update/{id}', 'AdminProductController@edit')->name('admin.get.edit.product');
         Route::post('/update/{id}', 'AdminProductController@update');
-        
         Route::get('{action}/{id}', 'AdminProductController@action')->name('admin.get.action.product');
+    });
+
+    Route::group(['prefix' => 'article'], function() {
+        Route::get('/', 'AdminArticleController@index')->name('admin.get.list.article');
+        Route::get('/create', 'AdminArticleController@create')->name('admin.get.create.article');
+        Route::post('/create', 'AdminArticleController@store');
+        Route::get('/update/{id}', 'AdminArticleController@edit')->name('admin.get.edit.article');
+        Route::post('/update/{id}', 'AdminArticleController@update');
+        Route::get('{action}/{id}', 'AdminArticleController@action')->name('admin.get.action.article');
     });
 });

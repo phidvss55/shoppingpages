@@ -18,6 +18,8 @@
         <link href="{{ asset('theme_admin/css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="{{ asset('theme_admin/css/dashboard.css') }}" rel="stylesheet">
+        <!-- Link font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
         <script src="{{ asset('theme_admin/js/ie-emulation-modes-warning.js') }}"></script>
     </head>
@@ -50,12 +52,12 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active">
+                        <li class="{{ \Request::route()->getName() == 'admin.home' ? 'active' : '' }}">
                             <a href="{{ route('admin.home') }}"> Trang Tổng Quan </a>
                         </li>
-                        <li><a href="{{ route('admin.get.list.category') }}"> Danh Mục </a></li>
-                        <li><a href="{{ route('admin.get.list.product') }}"> Sản Phẩm </a></li>
-                        <li><a href="#"> Tin Tức </a></li>
+                        <li class="{{ \Request::route()->getName() == 'admin.get.list.category' ? 'active' : '' }}"><a href="{{ route('admin.get.list.category') }}"> Danh Mục </a></li>
+                        <li class="{{ \Request::route()->getName() == 'admin.get.list.product' ? 'active' : '' }}"><a href="{{ route('admin.get.list.product') }}"> Sản Phẩm </a></li>
+                        <li class="{{ \Request::route()->getName() == 'admin.get.list.article' ? 'active' : '' }}"><a href="{{ route('admin.get.list.article') }}"> Tin Tức </a></li>
                         <li><a href="#"> Đơn Hàng </a></li>
                         <li><a href="#"> Thành Viên </a></li>
                     </ul>

@@ -51,6 +51,7 @@ class AdminCategoryController extends Controller
                     break;
             }
         }
+        return redirect()->back();
     }
 
     public function insertOrUpdate($requestCategory, $id='') {
