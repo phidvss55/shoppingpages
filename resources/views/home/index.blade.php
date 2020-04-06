@@ -1,4 +1,4 @@
-@extends('layouts.php')
+@extends('layouts.app')
 @section('content')
     
 @stop

@@ -69,8 +69,11 @@
                 <input type="number" name="pro_sale" value="{{ old('pro_sale', isset($product->pro_sale) ? $product->pro_sale : 0) }}" class="form-control" placeholder=" Phần trăm khuyến mãi ... ">
             </div>
             <div class="form-group">
+                <img id="out_img" src="{{ asset('images/no_image.png') }}" alt="" width="100%" height="300px">
+            </div>
+            <div class="form-group">
                 <label for="pro_avatar"> Avatar </label>
-                <input type="file" name="pro_avatar" class="form-control">
+                <input id="in_img" type="file" name="pro_avatar" class="form-control">
             </div>
             <div class="form-group">
                 <div class="checkbox">

@@ -35,6 +35,7 @@
                     <th>#</th>
                     <th> Tên sản phẩm </th>
                     <th> Loại sản phẩm </th>
+                    <th> Hình ảnh </th>
                     <th> Trạng thái </th>
                     <th> Nổi bật </th>
                     <th> Thao Tác </th>
@@ -54,6 +55,9 @@
                             </td>
                             <!-- Get category name -->
                             <td>{{ isset($product->category->c_name) ? $product->category->c_name : "[N\A]" }}</td> 
+                            <td>
+                                <img src="{{ pare_url_file($product->pro_avatar) }}" alt="" class="img img-responsive" width="80px" height="80px">
+                            </td>
                             <td>
                                 <a href="{{ route('admin.get.action.product', ['active', $product->id]) }}" class="label {{ $product->getStatus($product->pro_active)['class'] }}">{{ $product->getStatus($product->pro_active)['name'] }}</a>
                             </td>
