@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['namespace' => 'Auth'], function() {
+    Route::get('dang-ky', 'RegisterController@getRegister')->name('get.register');
+    Route::post('dang-ky', 'RegisterController@postRegister')->name('post.register');
+
+    Route::get('dang-nhap', 'LoginController@getLogin')->name('get.login');
+    Route::post('dang-nhap', 'LoginController@postLogin')->name('post.login');
+});
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/danh-muc/{slug}-{id}', 'CategoryController@getListProduct')->name('get.list.product');

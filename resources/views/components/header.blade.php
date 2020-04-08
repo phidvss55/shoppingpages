@@ -248,11 +248,16 @@
                     <div class="disflow">
                         <div class="expand dropps-menu">
                             <a href="#"><i class="fa fa-align-right"></i></a>
-                            <ul class="restrain language">
-                                <li><a href="login.html"> Quản lý </a></li>
-                                <li><a href="wishlist.html"> Sản phẩm yêu thích </a></li>
-                                <li><a href="cart.html"> Giỏ hàng </a></li>
-                                <li><a href="checkout.html"> Thoát</a></li>
+                            <ul class="restrain language" style="width: 200px">
+                                @if(Auth::check())
+                                    <li><a href="login.html"> Quản lý </a></li>
+                                    <li><a href="wishlist.html"> Sản phẩm yêu thích </a></li>
+                                    <li><a href="cart.html"> Giỏ hàng </a></li>
+                                    <li><a href="checkout.html"> Thoát</a></li>
+                                @else
+                                    <li><a href="{{ route('get.register') }}"> Đăng ký </a></li>
+                                    <li><a href="{{ route('get.login') }}"> Đăng nhập </a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
