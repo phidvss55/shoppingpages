@@ -23,6 +23,6 @@ class Article extends Model
     ];
 
     public function getStatus() {
-        return Arr::get($this->status, $this->pro_active, '[N\A]');
+        return Arr::get($this->status, $this->a_active, '[N\A]');
     }
 }

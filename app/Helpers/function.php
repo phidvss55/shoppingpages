@@ -33,7 +33,7 @@ if (!function_exists('upload_image'))
 		
 		// Tên file mới
 		$nameFile = trim(str_replace('.'.$ext,'',strtolower($info->getFilename())));
-		$filename = date('Y-m-d__').str_slug($nameFile) . '.' . $ext;
+		$filename = date('Y-m-d__').Str::slug($nameFile) . '.' . $ext;
 		
 		// thu muc goc de upload
 		$path = public_path().'/uploads/'.date('Y/m/d/');

@@ -1,4 +1,4 @@
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-sm-12">
@@ -38,8 +38,8 @@
                 <input type="text" id="a_description_seo" name="a_description_seo" class="form-control" value="{{ old('a_description_seo', isset($article->a_description_seo) ? $article->a_description_seo : '') }}" placeholder=" Meta description ... ">
             </div>
             <div class="form-group">
-                <label for="a_avatar"> Avatar </label>
-                <input type="file" name="a_avatar" class="form-control">
+                <label for="avatar"> Avatar </label>
+                <input type="file" name="avatar" class="form-control">
             </div>
             <a href="{{ route('admin.get.list.article') }}" class="btn btn-primary"> Back </a>
             <button class="btn btn-success" type="submit"> Lưu thông tin </button>

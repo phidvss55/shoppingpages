@@ -133,7 +133,7 @@
         </div>
     </div>
     <!-- info footer end -->
-    <!-- banner footer area start -->
+    {{-- <!-- banner footer area start -->
     <div class="banner-footer">
         <div class="container-fluid">
             <div class="row">
@@ -182,7 +182,7 @@
             </div>
         </div>
     </div>
-    <!-- banner footer area end -->
+    <!-- banner footer area end --> --}}
     <!-- footer address area start -->
     <div class="address-footer">
         <div class="container">
@@ -192,7 +192,7 @@
                 </div>
                 <div class="col-md-6 col-xs-12">
                     <div class="footer-payment pull-right">
-                        <a href="#"><img src="img/payment.png" alt="" /></a>
+                        <a href="#"><img src="{{ asset('img/payment.png') }}" alt="" /></a>
                     </div>
                 </div>
             </div>

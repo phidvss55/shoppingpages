@@ -1,4 +1,4 @@
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-sm-8">
@@ -73,7 +73,7 @@
             </div>
             <div class="form-group">
                 <label for="pro_avatar"> Avatar </label>
-                <input id="in_img" type="file" name="pro_avatar" class="form-control">
+                <input id="in_img" type="file" name="avatar" class="form-control">
             </div>
             <div class="form-group">
                 <div class="checkbox">

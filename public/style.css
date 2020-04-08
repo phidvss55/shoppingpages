@@ -774,7 +774,10 @@ span.amount {
     line-height: 22px;
 }
 h2.product-name {
-	margin: 0 0 5px;
+    margin: 0 0 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 h2.product-name a{
 	font-size: 12px;

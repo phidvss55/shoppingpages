@@ -4,7 +4,7 @@
             <!-- logo start -->
             <div class="col-md-3 col-sm-12 text-center nopadding-right">
                 <div class="top-logo">
-                    <a href="index.html"><img src="img/logo.gif" alt="" /></a>
+                    <a href=""><img src="{{ asset('img/logo.gif') }}" alt="" /></a>
                 </div>
             </div>
             <!-- logo end -->
@@ -13,25 +13,20 @@
                 <div class="mainmenu">
                     <nav>
                         <ul>
-                            <li class="expand"><a href="index.html"> Trang chủ </a></li>
-                            <li class="expand"><a href="shop-grid.html"> Sản phẩm </a></li>
-                            <li class="expand"><a href="shop-grid.html"> Tin tức </a></li>
-                            <li class="expand"><a href="shop-grid.html"> Giới thiệu </a></li>
-                            <li class="expand"><a href="shop-grid.html"> Liên hệ </a></li>
-                            <!-- <li class="expand"><a href="#">Pages</a>
+                            <li class="expand"><a href=""> Trang chủ </a></li>
+                            <li class="expand">
+                                <a href=""> Sản phẩm </a>
                                 <ul class="restrain sub-menu">
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="shop-grid.html">Shop Grid</a></li>
-                                    <li><a href="shop-list.html">Shop List</a></li>
-                                    <li><a href="cart.html">Shopping cart</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="404.html">404 Error</a></li>
+                                    @if( isset($categories) )
+                                        @foreach($categories as $category)
+                                            <li><a href="{{ route('get.list.product', [$category->c_slug, $category->id]) }}">{{ $category->c_name }}</a></li>
+                                        @endforeach
+                                    @endif
                                 </ul>
-                            </li> -->
+                            </li>
+                            <li class="expand"><a href=""> Tin tức </a></li>
+                            <li class="expand"><a href=""> Giới thiệu </a></li>
+                            <li class="expand"><a href=""> Liên hệ </a></li>
                         </ul>
                     </nav>
                 </div>
@@ -200,23 +195,23 @@
                                 <div class="restrain small-cart-content">
                                     <ul class="cart-list">
                                         <li>
-                                            <a class="sm-cart-product" href="product-details.html">
-                                                <img src="img/products/sm-products/cart1.jpg" alt="">
+                                            <a class="sm-cart-product" href="">
+                                                <img src="{{ asset('img/products/sm-products/cart1.jpg') }}" alt="">
                                             </a>
                                             <div class="small-cart-detail">
                                                 <a class="remove" href="#"><i class="fa fa-times-circle"></i></a>
-                                                <a href="#" class="edit-btn"><img src="img/btn_edit.gif" alt="Edit Button" /></a>
+                                                <a href="#" class="edit-btn"><img src="{{ asset('img/btn_edit.gif') }}" alt="Edit Button" /></a>
                                                 <a class="small-cart-name" href="product-details.html">Voluptas nulla</a>
                                                 <span class="quantitys"><strong>1</strong>x<span>$75.00</span></span>
                                             </div>
                                         </li>
                                         <li>
                                             <a class="sm-cart-product" href="product-details.html">
-                                                <img src="img/products/sm-products/cart2.jpg" alt="">
+                                                <img src="{{ asset('img/products/sm-products/cart2.jpg') }}" alt="">
                                             </a>
                                             <div class="small-cart-detail">
                                                 <a class="remove" href="#"><i class="fa fa-times-circle"></i></a>
-                                                <a href="#" class="edit-btn"><img src="img/btn_edit.gif" alt="Edit Button" /></a>
+                                                <a href="#" class="edit-btn"><img src="{{ asset('img/btn_edit.gif') }}" alt="Edit Button" /></a>
                                                 <a class="small-cart-name" href="product-details.html">Donec ac tempus</a>
                                                 <span class="quantitys"><strong>1</strong>x<span>$75.00</span></span>
                                             </div>

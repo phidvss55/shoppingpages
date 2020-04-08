@@ -66,6 +66,14 @@ class AdminArticleController extends Controller
         $article->a_content = $requestArticle->a_content;
         $article->a_title_seo = $requestArticle->a_title_seo ? $requestArticle->a_title_seo : $requestArticle->a_name;
         $article->a_description_seo = $requestArticle->a_description_seo ? $requestArticle->a_description_seo : $requestArticle->a_name;
+        
+        if($requestArticle->hasFile('avatar')) {
+            $file = upload_image('avatar');
+            if( isset($file['name'])) {
+                $article->a_avatar = $file['name'];
+            }
+        }
+
         $article->save();
     }
 }

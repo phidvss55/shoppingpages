@@ -40,4 +40,23 @@ Route::prefix('admin')->group(function() {
         Route::post('/update/{id}', 'AdminArticleController@update');
         Route::get('{action}/{id}', 'AdminArticleController@action')->name('admin.get.action.article');
     });
+
+    Route::group(['prefix' => 'transaction'], function() {
+        Route::get('/', 'AdminTransactionController@index')->name('admin.get.list.transaction');
+        // Route::get('/create', 'AdminArticleController@create')->name('admin.get.create.article');
+        // Route::post('/create', 'AdminArticleController@store');
+        // Route::get('/update/{id}', 'AdminArticleController@edit')->name('admin.get.edit.article');
+        // Route::post('/update/{id}', 'AdminArticleController@update');
+        // Route::get('{action}/{id}', 'AdminArticleController@action')->name('admin.get.action.article');
+    });
+
+    Route::group(['prefix' => 'user'], function() {
+        Route::get('/', 'AdminUserController@index')->name('admin.get.list.user');
+        // Route::get('/create', 'AdminArticleController@create')->name('admin.get.create.article');
+        // Route::post('/create', 'AdminArticleController@store');
+        // Route::get('/update/{id}', 'AdminArticleController@edit')->name('admin.get.edit.article');
+        // Route::post('/update/{id}', 'AdminArticleController@update');
+        // Route::get('{action}/{id}', 'AdminArticleController@action')->name('admin.get.action.article');
+    });
+
 });
