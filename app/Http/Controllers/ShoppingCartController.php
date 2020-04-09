@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
+    // Them gio hang
     public function addProduct(Request $request, $id) {
         $product = Product::select('pro_name', 'id', 'pro_price','pro_sale','pro_avatar')->find($id);
         if(!$product) {
@@ -24,8 +25,15 @@ class ShoppingCartController extends Controller
         return redirect()->back();
     }
 
+    //danh sach gio hang
     public function getListShoppingCart() {
         $products = \Cart::content();
         return view('shopping.index', compact('products'));
+    }
+
+    //form thanh toan
+    public function getFormPay() {
+        $products = \Cart::content();
+        return view('shopping.pay', compact('products'));
     }
 }

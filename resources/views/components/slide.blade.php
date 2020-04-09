@@ -3,11 +3,12 @@
         <!-- slider -->
         <div class="bend niceties preview-2">
             <div id="ensign-nivoslider" class="slides">	
-                <img src="{{ asset('img/slider/home-1/slider1-1.jpg') }}" alt="" title="#slider-direction-1"  />
-                <img src="{{ asset('img/slider/home-1/slider1-2.jpg') }}" alt="" title="#slider-direction-2"  />
+                <img src="{{ asset('img/slider/home-1/slider-1.1.png') }}" alt="" title="#slider-direction-1"  />
+                <img src="{{ asset('img/slider/home-1/slider-1.2.png') }}" alt="" title="#slider-direction-2"  />
+                <img src="{{ asset('img/slider/home-1/slider-1.3.png') }}" alt="" title="#slider-direction-3"  />
             </div>
             <!-- direction 1 -->
-            <div id="slider-direction-1" class="t-cn slider-direction">
+            {{-- <div id="slider-direction-1" class="t-cn slider-direction">
                 <div class="slider-progress"></div>
                 <div class="slider-content t-cn s-tb slider-1">
                     <div class="title-container s-tb-c title-compress">
@@ -29,7 +30,7 @@
                         <a class="btn-title" href="">View collection</a>
                     </div>
                 </div>	
-            </div>
+            </div> --}}
         </div>
         <!-- slider end-->
     </div>

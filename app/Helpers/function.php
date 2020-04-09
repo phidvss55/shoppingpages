@@ -78,11 +78,13 @@ if (!function_exists('pare_url_file')) {
 	}
 }
 
-
+//if this function nto exits
 if (!function_exists('get_data_user'))
 {
-	function get_data_user($type,$field = 'id')
+	function get_data_user($type,$field = 'id') //2 params: type, column in users table
 	{
+		//if user exist -> get infor user else -> return null
 		return Auth::guard($type)->user() ? Auth::guard($type)->user()->$field : '';
 	}
 }
+
