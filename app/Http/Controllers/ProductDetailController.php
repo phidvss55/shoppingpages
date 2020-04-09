@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ProductDetailController extends Controller
 {
     public function productDetail() {
-        return view('')
+        // return view('')
     }
 }

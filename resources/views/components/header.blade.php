@@ -26,7 +26,7 @@
                             </li>
                             <li class="expand"><a href=""> Tin tức </a></li>
                             <li class="expand"><a href=""> Giới thiệu </a></li>
-                            <li class="expand"><a href=""> Liên hệ </a></li>
+                            <li class="expand"><a href="{{ route('get.contact') }}"> Liên hệ </a></li>
                         </ul>
                     </nav>
                 </div>
@@ -163,34 +163,12 @@
             <!-- top details area start -->
             <div class="col-md-3 col-sm-12 nopadding-left">
                 <div class="top-detail">
-                    <!-- language division start -->
-                    <!-- <div class="disflow">
-                        <div class="expand lang-all disflow">
-                            <a href="#"><img src="img/country/en.gif" alt="">English</a>
-                            <ul class="restrain language">
-                                <li><a href="#"><img src="img/country/it.gif" alt="">italiano</a></li>
-                                <li><a href="#"><img src="img/country/nl_nl.gif" alt="">Nederlands</a></li>
-                                <li><a href="#"><img src="img/country/de_de.gif" alt="">Deutsch</a></li>
-                                <li><a href="#"><img src="img/country/en.gif" alt="">English</a></li>
-                            </ul>
-                        </div>
-                        <div class="expand lang-all disflow">
-                            <a href="#">$ USD</a>
-                            <ul class="restrain language">
-                                <li><a href="#">€ Eur</a></li>
-                                <li><a href="#">$ USD</a></li>
-                                <li><a href="#">£ GBP</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
-                    <!-- language division end -->
-                    <!-- addcart top start -->
                     <div class="disflow">
                         <div class="circle-shopping expand">
                             <div class="shopping-carts text-right">
                                 <div class="cart-toggler">
-                                    <a href="#"><i class="icon-bag"></i></a>
-                                    <a href="#"><span class="cart-quantity">2</span></a>
+                                    <a href="{{ route('get.list.shopping.cart') }}"><i class="icon-bag"></i></a>
+                                    <a href="{{ route('get.list.shopping.cart') }}"><span class="cart-quantity">{{ Cart::count() }}</span></a>
                                 </div>
                                 <div class="restrain small-cart-content">
                                     <ul class="cart-list">
@@ -250,10 +228,10 @@
                             <a href="#"><i class="fa fa-align-right"></i></a>
                             <ul class="restrain language" style="width: 200px">
                                 @if(Auth::check())
-                                    <li><a href="login.html"> Quản lý </a></li>
-                                    <li><a href="wishlist.html"> Sản phẩm yêu thích </a></li>
-                                    <li><a href="cart.html"> Giỏ hàng </a></li>
-                                    <li><a href="checkout.html"> Thoát</a></li>
+                                    <li><a href=""> Quản lý </a></li>
+                                    <li><a href=""> Sản phẩm yêu thích </a></li>
+                                    <li><a href=""> Giỏ hàng </a></li>
+                                    <li><a href="{{ route('get.logout.user') }}"> Thoát</a></li>
                                 @else
                                     <li><a href="{{ route('get.register') }}"> Đăng ký </a></li>
                                     <li><a href="{{ route('get.login') }}"> Đăng nhập </a></li>

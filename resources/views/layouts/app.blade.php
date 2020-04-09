@@ -86,7 +86,6 @@
 		<!-- header area start -->
 		@include('components.header')
 		<!-- header area end -->
-	
 		@yield('content')
 		<!-- FOOTER START -->
         @include('components.footer')

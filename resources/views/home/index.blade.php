@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    <!-- Start home slider -->
+    {{-- @include('components.slide') --}}
+    <!-- End home slider -->
+    <!-- Start home banner -->
+    {{-- @include('components.banner') --}}
+    <!-- End home banner -->
     @if (isset($productHot))
         <!-- product section start -->
         <div class="our-product-area new-product">
@@ -33,7 +39,7 @@
                                                                 <a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
                                                             </div>
                                                             <div class="compare-button">
-                                                                <a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
+                                                                <a href="{{ route('add.shopping.cart',$proHot->id) }}" title="Add to Cart"><i class="icon-bag"></i></a>
                                                             </div>									
                                                         </div>
                                                         <div class="quickviewbtn">
@@ -42,7 +48,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="price-box">
-                                                    <span class="new-price">{{ $proHot->pro_price }}</span>
+                                                    <span class="new-price">{{ number_format($proHot->pro_price, 0, ',','.') }} đ</span>
                                                 </div>
                                             </div>
                                             <div class="product-content">

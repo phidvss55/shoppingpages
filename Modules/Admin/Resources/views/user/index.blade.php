@@ -14,13 +14,28 @@
                 <tr>
                     <th>#</th>
                     <th> Tên danh mục </th>
-                    <th> Title Seo </th>
-                    <th> Trạng Thái </th>
+                    <th> Email </th>
+                    <th> Số điện thoại </th>
+                    <th> Hình ảnh </th>
                     <th> Thao Tác </th>
                 </tr>
             </thead>
             <tbody>
-
+                @if(isset($users))
+                    @foreach($users as $user) 
+                        <tr>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->phone }}</td>
+                            <td>{{ $user->avatar }}</td>
+                            <td>
+                                {{-- <a class="action-support" href="{{ route('admin.get.edit.user', $user->id) }}"><i class="fas fa-pen"></i> Edit </a> --}}
+                                {{-- <a class="action-support" href="{{ route('admin.get.action.user', ['delete', $user->id]) }}"><i class="fas fa-trash-alt"></i> Delete </a> --}}
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>
