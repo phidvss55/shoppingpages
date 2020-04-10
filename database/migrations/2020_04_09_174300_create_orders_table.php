@@ -13,8 +13,14 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
+        //save detail of one transaction
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('or_transaction_id')->index()->default(0);
+            $table->integer('or_product_id')->index()->default(0);
+            $table->tinyInteger('or_qty')->default(0);
+            $table->integer('or_price')->comment('Price at the bought time')->default(0);
+            $table->tinyInteger('or_sale')->comment('Rate sale at the bought time')->default(0);
             $table->timestamps();
         });
     }

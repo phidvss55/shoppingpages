@@ -3,29 +3,31 @@
     <!-- Start home slider -->
     {{-- @include('components.slide') --}}
     <!-- End home slider -->
+
     <!-- Start home banner -->
     {{-- @include('components.banner') --}}
     <!-- End home banner -->
-    @if (isset($productHot))
-        <!-- product section start -->
-        <div class="our-product-area new-product">
-            <div class="container">
-                <div class="area-title">
-                    <h2> Sản phẩm nổi bật </h2>
-                </div>
-                <!-- our-product area start -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="features-curosel">
+
+    <!-- product section start -->
+    <div class="our-product-area new-product">
+        <div class="container">
+            <div class="area-title">
+                <h2> Sản phẩm nổi bật </h2>
+            </div>
+            <!-- our-product area start -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="features-curosel">
+                            @if (isset($productHot))
                                 @foreach ($productHot as $proHot)
                                     <!-- single-product start -->
                                     <div class="col-lg-12 col-md-12">
                                         <div class="single-product first-sale">
                                             <div class="product-img">
-                                                <a href="#">
+                                                <a href="{{ route('get.detail.product',[$proHot->pro_slug, $proHot->id]) }}">
                                                     <img class="primary-image" src="{{ asset(pare_url_file($proHot->pro_avatar)) }}" alt="" >
-                                                    {{-- <img class="secondary-image" src="img/products/product-2.jpg" alt="" /> --}}
+                                                    <img class="secondary-image" src="{{ asset(pare_url_file($proHot->pro_avatar)) }}" alt="" />
                                                 </a>
                                                 <div class="action-zoom">
                                                     <div class="add-to-cart">
@@ -43,7 +45,7 @@
                                                             </div>									
                                                         </div>
                                                         <div class="quickviewbtn">
-                                                            <a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
+                                                            <a href="{{ route('get.detail.product',[$proHot->pro_slug, $proHot->id]) }}" title="Add to Compare"><i class="fa fa-retweet"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -59,15 +61,15 @@
                                     </div>
                                     <!-- single-product end -->
                                 @endforeach
-                            </div>
-                        </div>	
-                    </div>
+                            @endif
+                        </div>
+                    </div>	
                 </div>
-                <!-- our-product area end -->	
             </div>
+            <!-- our-product area end -->	
         </div>
-        <!-- product section end -->
-    @endif
+    </div>
+    <!-- product section end -->
     <!-- latestpost area start -->
     @if(isset($articleNews))
     <div class="latest-post-area">

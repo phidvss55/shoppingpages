@@ -6,7 +6,7 @@ use App\Model\Article;
 use App\Model\Product;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends FrontendController
 {
     public function __construct()
     {

@@ -15,4 +15,5 @@ class FrontendController extends Controller
     }
 
     //IMPORTANT NOTE: THIS FUNCTION NOT WORK -> SHARE VIEW IN AppServiceProvider in Boot() function
+    //UPdate: All controller implement from FronendController not Controller
 }

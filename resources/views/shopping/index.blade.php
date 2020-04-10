@@ -19,7 +19,7 @@
                 </thead>
                 <tbody>
                     <?php $i = 1 ?>
-                    @foreach($products as $product)
+                    @foreach($products as $key => $product)
                     <tr>
                         <td>#{{ $i }} </td>
                         <td>{{ $product->name }}</td>
@@ -31,7 +31,7 @@
                         <td>{{ number_format($product->price * $product->qty, 0, ',', '.') }}</td>
                         <td>
                             <a href=""><i class="fa fa-pencil"></i> Edit </a>
-                            <a href=""><i class="fa fa-trash-o"></i> Delete </a>
+                            <a href="{{ route('delete.shopping.cart', $key) }}"><i class="fa fa-trash-o"></i> Delete </a>
                         </td>
                     </tr>
                     <?php $i++ ?>
