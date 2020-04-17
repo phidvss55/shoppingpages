@@ -10,6 +10,8 @@
         <!-- Favicon
 		============================================ -->
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+		{{-- Token --}}
+		<meta name="csrf-token" content="{{ csrf_token() }}"/>
 		
 		<!-- Fonts
 		============================================ -->
@@ -140,6 +142,7 @@
         
    		<!-- main js
 		============================================ -->           
-        <script src="{{ asset('js/main.js') }}"></script>
+		<script src="{{ asset('js/main.js') }}"></script>
+		@yield('script')
     </body>
 </html>

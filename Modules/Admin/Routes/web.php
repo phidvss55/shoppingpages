@@ -41,19 +41,25 @@ Route::prefix('admin')->group(function() {
         Route::get('{action}/{id}', 'AdminArticleController@action')->name('admin.get.action.article');
     });
 
+    //ql don ahng
     Route::group(['prefix' => 'transaction'], function() {
         Route::get('/', 'AdminTransactionController@index')->name('admin.get.list.transaction');
         Route::get('/view/{id}', 'AdminTransactionController@viewOrder')->name('admin.get.view.order');
         Route::get('{action}/{id}', 'AdminTransactionController@action')->name('admin.get.action.transaction');
     });
 
+    //ql user
     Route::group(['prefix' => 'user'], function() {
         Route::get('/', 'AdminUserController@index')->name('admin.get.list.user');
-        // Route::get('/create', 'AdminArticleController@create')->name('admin.get.create.article');
-        // Route::post('/create', 'AdminArticleController@store');
-        // Route::get('/update/{id}', 'AdminArticleController@edit')->name('admin.get.edit.article');
-        // Route::post('/update/{id}', 'AdminArticleController@update');
-        // Route::get('{action}/{id}', 'AdminArticleController@action')->name('admin.get.action.article');
     });
+
+    //ql thanh vien
+    Route::group(['prefix' => 'rating'], function() {
+        Route::get('/', 'AdminRatingController@index')->name('admin.get.list.rating');
+    });
+
+    //quan ly lien he -> if error -> change to web.php outside
+    Route::get('lien-he', 'ContactController@getContact')->name('get.contact');
+    Route::post('lien-he', 'ContactController@saveContact');
 
 });

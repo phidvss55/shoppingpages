@@ -38,5 +38,8 @@ Route::group(['prefix' => 'gio-hang', 'middleware' => 'CheckLoginUser'], functio
     Route::post('/thanh-toan', 'ShoppingCartController@saveInfoShoppingCart');
 });
 
-Route::get('lien-he', 'ContactController@getContact')->name('get.contact');
-Route::post('lien-he', 'ContactController@saveContact');
+//route ajax
+Route::group(['prefix' => 'ajax', 'middleware' => 'CheckLoginUser'], function() {
+    Route::post('/danh-gia/{id}', 'RatingController@saveRating')->name('post.rating.product');
+});
+
