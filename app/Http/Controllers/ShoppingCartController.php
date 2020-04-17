@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
-{
+{    
     // Them gio hang
     public function addProduct(Request $request, $id) {
         $product = Product::select('pro_name', 'id', 'pro_price','pro_sale','pro_avatar')->find($id);

@@ -1,59 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <style>
-        .product-tab-content {
-            overflow: hidden;
-        }
-        .product-tab-content h2 { font-size: 24px !important; }
-        .product-tab-content h4 { font-size: 24px !important; }
-        .product-tab-content h5 { font-size: 24px !important; }
 
-        .product-tab-content img {
-            margin: 0 auto;
-            text-align: center;
-            max-width: 100%;
-        }
-
-        .list_start i:hover {
-            cursor: pointer;
-        }
-
-        .list_text {
-            display: inline-block;
-            margin-left: 10px;
-            position: relative;
-            background: #52b858;
-            color: #fff;
-            padding: 2px 8px;
-            box-sizing: border-box;
-            font-size: 12px;
-            border-radius: 2px;
-            display: none;
-        }
-
-        .list_text::after {
-            right: 100%;
-            top: 50%;
-            border: solid transparent;
-            content: '';
-            height: 0;
-            width: 0;
-            position: absolute;
-            pointer-events: none;
-            border-color: rgba(82, 148, 88, 0);
-            border-right-color: #52b858;
-            border-width: 6px;
-            margin-top: -6px;
-        }
-
-        .list_start .rating_active {
-            color: #ff9705;
-        }
-
-        .pro-rating .active {
-            color: #ff9705 !important;
-        }
-    </style>
     <!-- breadcrumbs area start -->
     <div class="breadcrumbs">
         <div class="container">
@@ -215,6 +162,32 @@
                                     <a href="{{ route('post.rating.product', $productDetail->id) }}" class="js_rating_product" style="width:200px;background:#288ad6;padding: 5px 10px;color:white;border-radius:5px;">Gưi đánh giá</a>
                                 </div>
                             </div>
+
+                        </div>
+                        <div class="component_list_rating">
+                            @if (isset($ratings))
+                                @foreach ($ratings as $rating)
+                                    <div class="rating_item" style="margin:10px 0">
+                                        <div>
+                                            <span style="color:#333;font-weight:bold;text-transform:capitalize">
+                                                {{ isset($rating->user->name) ? $rating->user->name : '[N\A]' }}
+                                            </span>
+                                            <a href="" style="color:#2ba832"><i class="fa fa-check-circle-o"></i> Đã mua hàng ở đây </a>
+                                        </div>
+                                        <p style="margin:0">
+                                            <span class="pro-rating">
+                                                @for($i = 1; $i <= 5; $i++)
+                                                    <i class="fa fa-star {{ $i <= $rating->ra_number ? 'active' : '' }}"></i>
+                                                @endfor
+                                            </span>
+                                            <span>{{ $rating->ra_content }}</span>
+                                        </p>
+                                        <div>
+                                            <span><i class="fa fa-clock-o"></i> {{ $rating->created_at }} </span>
+                                        </div>
+                                    </div>                                        
+                                @endforeach
+                            @endif
                         </div>
                     </div>					
                 </div>

@@ -119,3 +119,14 @@ body {
   padding: 5px 10px;  
   font-size: 12px;
 }
+
+.name-dashboard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45%, -45%);
+  color: white;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 0;
+}

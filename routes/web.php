@@ -43,3 +43,6 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'CheckLoginUser'], function() 
     Route::post('/danh-gia/{id}', 'RatingController@saveRating')->name('post.rating.product');
 });
 
+//quan ly lien he -> if error -> change to web.php outside
+Route::get('lien-he', 'ContactController@getContact')->name('get.contact');
+Route::post('lien-he', 'ContactController@saveContact');

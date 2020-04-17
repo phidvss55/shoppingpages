@@ -12,6 +12,7 @@ class HomeController extends FrontendController
     {
         parent::__construct();
     }
+    
     public function index() {
         $productHot = Product::where([
             'pro_hot' => Product::HOT_ON,

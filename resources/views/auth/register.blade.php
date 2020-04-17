@@ -49,7 +49,7 @@
                             <div class="form-action">
                                 <p class="lost_password"> <a href="#">Lost your password?</a></p>
                                 <div class="actions-log">
-                                    <input type="submit" class="button" name="register" value="Đăng nhập">
+                                    <input type="submit" class="button" name="register" value="Đăng Ký">
                                 </div>
                                 <label for="rememberme" class="inline"> 
                                 <input name="rememberme" type="checkbox" id="rememberme" value="forever"> Remember me </label>

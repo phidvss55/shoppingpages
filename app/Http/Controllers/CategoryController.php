@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
     public function getListProduct(Request $request) {
         $url = $request->segment(2);
         $url = preg_split('/(-)/i', $url);

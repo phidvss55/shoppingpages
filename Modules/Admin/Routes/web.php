@@ -58,8 +58,9 @@ Route::prefix('admin')->group(function() {
         Route::get('/', 'AdminRatingController@index')->name('admin.get.list.rating');
     });
 
-    //quan ly lien he -> if error -> change to web.php outside
-    Route::get('lien-he', 'ContactController@getContact')->name('get.contact');
-    Route::post('lien-he', 'ContactController@saveContact');
+    //ql lien he
+    Route::group(['prefix' => 'contact'], function() {
+        Route::get('/', 'AdminContactController@index')->name('admin.get.list.contact');
+    });
 
 });
