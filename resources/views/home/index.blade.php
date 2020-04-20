@@ -25,6 +25,12 @@
                                     <div class="col-lg-12 col-md-12">
                                         <div class="single-product first-sale">
                                             <div class="product-img">
+                                                @if ($proHot->pro_number == 0)
+                                                    <span style="position:absolute;background:#a91e63;color:white;padding:2px 6px;border-radius:5px;"> Tạm hết hàng </span>
+                                                @endif
+                                                @if ($proHot->pro_sale > 0)
+                                                <span style="position:absolute;background-image:linear-gradient(-90deg,#ec1f1f 0%,#ff9c00 100%);border-radius:10px;padding:5px 10px;color:white;right:0"> Giảm {{ $proHot->pro_sale }} %</span>
+                                                @endif
                                                 <a href="{{ route('get.detail.product',[$proHot->pro_slug, $proHot->id]) }}">
                                                     <img class="primary-image" src="{{ asset(pare_url_file($proHot->pro_avatar)) }}" alt="" >
                                                     <img class="secondary-image" src="{{ asset(pare_url_file($proHot->pro_avatar)) }}" alt="" />

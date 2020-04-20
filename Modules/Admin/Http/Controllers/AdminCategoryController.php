@@ -27,7 +27,7 @@ class AdminCategoryController extends Controller
 
     public function store(RequestCategory $requestCategory) {
         $this->insertOrUpdate($requestCategory);
-        return redirect()->back();
+        return redirect()->back()->with('success','Thêm mới thành công');
     }
 
     public function edit($id) {
@@ -37,21 +37,23 @@ class AdminCategoryController extends Controller
 
     public function update($id, RequestCategory $requestCategory) {
         $this->insertOrUpdate($requestCategory, $id);
-        return redirect()->back();
+        return redirect()->back()->with('success',' Cập nhật thành công');;
     }
 
     public function action($action, $id) {
+        $message = '';
         if($action) {
             $category = Category::findOrFail($id);
             switch($action) {
                 case 'delete':
                     $category->delete();
+                    $message = ' Xoá dữ liệU thành công. ';
                     break;
                 default:
                     break;
             }
         }
-        return redirect()->back();
+        return redirect()->back()->with('success', $message);
     }
 
     public function insertOrUpdate($requestCategory, $id='') {

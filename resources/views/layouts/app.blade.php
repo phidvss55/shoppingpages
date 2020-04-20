@@ -88,6 +88,26 @@
 		<!-- header area start -->
 		@include('components.header')
 		<!-- header area end -->
+
+		@if( Session::has('success'))
+			<div class="alert alert-success alert-dismissible" style="position:fixed;right:20px;top:20px;left:50%;transform:translateX(-50%)">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Thành công!</strong> {{ Session::get('success') }}
+			</div>
+		@endif
+		@if( Session::has('danger'))
+			<div class="alert alert-danger alert-dismissible" style="position:fixed;right:20px;top:20px;left:50%;transform:translateX(-50%)">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Thất bại!</strong> {{ Session::get('danger') }}
+			</div>
+		@endif
+		@if( Session::has('warning'))
+			<div class="alert alert-warning alert-dismissible" style="position:fixed;right:20px;top:20px;left:50%;transform:translateX(-50%)">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Cảnh báo! </strong> {{ Session::get('warning') }}
+			</div>
+		@endif
+
 		@yield('content')
 		<!-- FOOTER START -->
         @include('components.footer')

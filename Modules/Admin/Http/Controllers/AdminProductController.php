@@ -82,6 +82,7 @@ class AdminProductController extends Controller
         $product->pro_category_id = $requestProduct->pro_category_id;
         $product->pro_price = $requestProduct->pro_price;
         $product->pro_sale = $requestProduct->pro_sale;
+        $product->pro_number = $requestProduct->pro_number;
         $product->pro_description = $requestProduct->pro_description;
         $product->pro_content = $requestProduct->pro_content;
         $product->pro_title_seo = $requestProduct->pro_title_seo ? $requestProduct->pro_title_seo : $requestProduct->pro_name ;

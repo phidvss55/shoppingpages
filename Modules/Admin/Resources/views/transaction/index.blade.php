@@ -32,14 +32,15 @@
                             <td>{{ number_format($transaction->tr_total,0,',','.') }} VND</td>
                             <td>
                                 @if ($transaction->tr_status == 1)
-                                    <a href="#" class="label-sucsess label"> Đã xử lý </a>
+                                    <a href="#" class="label-success label"> Đã xử lý </a>
                                 @else
-                                    <a href="" class="label label-default"> Chưa xử lý </a>
+                                    <a href="{{ route('admin.get.action.transaction', ['resolve',$transaction->id]) }}" class="label label-default"> Chưa xử lý </a>
                                 @endif
                             </td>
                             <td>
-                                <a class="btn_customer_action" href="{{ route('admin.get.action.transaction', ['delete', $transaction->id]) }}"><i class="fas fa-trash-alt"></i> Delete</a>
-                                <a class="btn_customer_action js_order_item" data-id="{{ $transaction->id }}" href="{{ route('admin.get.view.order', $transaction->id) }}"><i class="fas fa-eye"></i> View</a>
+                                <a class="btn_customer_action" href="{{ route('admin.get.action.transaction', ['delete', $transaction->id]) }}"><i class="fas fa-trash-alt"></i> Delete </a>
+                                <span style="margin: 0 4px"></span>                                
+                                <a class="btn_customer_action js_order_item" data-id="{{ $transaction->id }}" href="{{ route('admin.get.view.order', $transaction->id) }}"><i class="fas fa-eye"></i> View </a>
                             </td>
                         </tr>  
                     @endforeach

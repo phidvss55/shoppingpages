@@ -24,7 +24,7 @@
                                     @endif
                                 </ul>
                             </li>
-                            <li class="expand"><a href=""> Tin tức </a></li>
+                            <li class="expand"><a href="{{ route('get.list.article') }}"> Tin tức </a></li>
                             <li class="expand"><a href=""> Giới thiệu </a></li>
                             <li class="expand"><a href="{{ route('get.contact') }}"> Liên hệ </a></li>
                         </ul>

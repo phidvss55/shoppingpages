@@ -65,6 +65,9 @@
                                         <span><i style="padding: 0 5px" class="fas fa-dollar-sign"></i></span><span>0 %</span>
                                     </li>
                                     <li>
+                                        <span> Số lượng </span><span style="font-weight:700">{{ $product->pro_number }}</span>
+                                    </li>
+                                    <li>
                                         <span> Đánh giá </span>
                                         <span class="rating">
                                             @for($i = 1; $i <= 5; $i++)

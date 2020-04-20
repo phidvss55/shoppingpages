@@ -6,7 +6,7 @@ use App\Model\Contact;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class ContactController extends FrontendController
 {
     public function getContact() {
         return view('contact');

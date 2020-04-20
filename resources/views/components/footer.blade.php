@@ -6,7 +6,7 @@
                 <div class="col-md-3 col-sm-4">
                     <div class="single-snap-footer">
                         <div class="snap-footer-title">
-                            <h4>Company info</h4>
+                            <h4> Thông tin nhóm </h4>
                         </div>
                         <div class="cakewalk-footer-content">
                             <p class="footer-des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim adm.</p>
@@ -17,15 +17,14 @@
                 <div class="col-md-3 col-sm-4">
                     <div class="single-snap-footer">
                         <div class="snap-footer-title">
-                            <h4>Information</h4>
+                            <h4> Thông Tin </h4>
                         </div>
                         <div class="cakewalk-footer-content">
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms & Condition</a></li>
+                                <li><a href="#">Về chúng tôi</a></li>
+                                <li><a href="#">Thông tin giao hàng</a></li>
+                                <li><a href="#">Chính sách vận chuyển</a></li>
+                                <li><a href="#">Điều khoản sử dụng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -33,15 +32,14 @@
                 <div class="col-md-2 col-sm-4">
                     <div class="single-snap-footer">
                         <div class="snap-footer-title">
-                            <h4>Fashion Tags</h4>
+                            <h4> Tài khoản </h4>
                         </div>
                         <div class="cakewalk-footer-content">
                             <ul>
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">My Cart</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Checkout</a></li>
+                                <li><a href="#"> Tổng quan </a></li>
+                                <li><a href="#"> Đăng nhập </a></li>
+                                <li><a href="#"> Giỏ hàng </a></li>
+                                <li><a href="#"> Sản phẩm yêu thích </a></li>
                             </ul>
                         </div>
                     </div>
@@ -49,23 +47,7 @@
                 <div class="col-md-2 hidden-sm">
                     <div class="single-snap-footer">
                         <div class="snap-footer-title">
-                            <h4>Fashion Tags</h4>
-                        </div>
-                        <div class="cakewalk-footer-content">
-                            <ul>
-                                <li><a href="#">Sitemap</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Advanced Search</a></li>
-                                <li><a href="#">Affiliates</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 hidden-sm">
-                    <div class="single-snap-footer">
-                        <div class="snap-footer-title">
-                            <h4>Follow Us</h4>
+                            <h4> Theo dõi chúng tôi </h4>
                         </div>
                         <div class="cakewalk-footer-content social-footer">
                             <ul>

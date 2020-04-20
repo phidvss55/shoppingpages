@@ -8,16 +8,20 @@ use App\Model\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ShoppingCartController extends Controller
+class ShoppingCartController extends FrontendController
 {    
     // Them gio hang
     public function addProduct(Request $request, $id) {
-        $product = Product::select('pro_name', 'id', 'pro_price','pro_sale','pro_avatar')->find($id);
+        $product = Product::select('pro_name', 'id', 'pro_price','pro_sale','pro_avatar','pro_number')->find($id);
         if(!$product) return redirect('/');
 
         $price = $product->pro_price;
         if($product->pro_sale) {
             $price = $price * (100 - $product->pro_sale) / 100;
+        }   
+
+        if($product->pro_number == 0) {
+            return redirect()->back()->with('warning', ' Sản phẩm tạm thời hết hàng.');
         }
 
         //implement shopping cart laravel github
@@ -33,7 +37,7 @@ class ShoppingCartController extends Controller
             ],
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', ' Mua hàng thành công. ');
     }
 
     //danh sach gio hang

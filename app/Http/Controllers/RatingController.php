@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class RatingController extends Controller
+class RatingController extends FrontendController
 {
     public function saveRating(Request $request, $id) {
         if($request->ajax()) {
