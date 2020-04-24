@@ -47,7 +47,28 @@ class CategoryController extends FrontendController
                 }
             }
 
-            $products = $products->orderBy('id', 'DESC')->paginate(3);
+            if($request->orderby) {
+                $orderBy = $request->orderby;
+                switch($orderBy) {
+                    case 'desc':
+                        $products->orderBy('id', 'DESC');
+                        break;
+                    case 'asc':
+                        $products->orderBy('id', 'asc');
+                        break;
+                    case 'price_desc':
+                        $products->orderBy('pro_price', 'DESC');
+                        break;
+                    case 'price_asc':
+                        $products->orderBy('pro_price', 'DESC');
+                        break;
+                    case 'default':
+                        $products->orderBy('id', 'DESC');
+                        break;
+                }
+            }
+
+            $products = $products->paginate(3);
 
             $cateProduct = Category::find($id);
 

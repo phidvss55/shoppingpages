@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+        .sidebar-content .active {
+            color: #c2a476;
+        }
+    </style>
     <!-- breadcrumbs area start -->
     <div class="breadcrumbs">
         <div class="container">
@@ -37,12 +42,12 @@
                                 <h6> Khoảng giá </h6>
                             </div>
                             <ul>
-                                <li><a href="?price=1"> Dưới 1 tr </a><span> (14)</span></li>
-                                <li><a href="?price=2"> Từ 1 tr - 3 tr</a><span> (14)</span></li>
-                                <li><a href="?price=3"> Từ 3 tr - 5 tr</a><span> (14)</span></li>
-                                <li><a href="?price=4"> Từ 5 tr - 7 tr</a><span> (14)</span></li>
-                                <li><a href="?price=5"> Từ 7 tr - 10 tr</a><span> (14)</span></li>
-                                <li><a href="?price=6"> Trên 10 tr </a><span> (14)</span></li>
+                                <li><a class="{{ Request::get('price') == 1 ? 'active' : '' }}" href="{{ request()->fullUrlWithQuery(['price'=> 1]) }}"> Dưới 1 tr </a><span> (14)</span></li>
+                                <li><a class="{{ Request::get('price') == 2 ? 'active' : '' }}" href="{{ request()->fullUrlWithQuery(['price'=> 2]) }}"> Từ 1 tr - 3 tr</a><span> (14)</span></li>
+                                <li><a class="{{ Request::get('price') == 3 ? 'active' : '' }}" href="{{ request()->fullUrlWithQuery(['price'=> 3]) }}"> Từ 3 tr - 5 tr</a><span> (14)</span></li>
+                                <li><a class="{{ Request::get('price') == 4 ? 'active' : '' }}" href="{{ request()->fullUrlWithQuery(['price'=> 4]) }}"> Từ 5 tr - 7 tr</a><span> (14)</span></li>
+                                <li><a class="{{ Request::get('price') == 5 ? 'active' : '' }}" href="{{ request()->fullUrlWithQuery(['price'=> 5]) }}"> Từ 7 tr - 10 tr</a><span> (14)</span></li>
+                                <li><a class="{{ Request::get('price') == 6 ? 'active' : '' }}" href="{{ request()->fullUrlWithQuery(['price'=> 6]) }}"> Trên 10 tr </a><span> (14)</span></li>
                             </ul>
                         </aside>	
                         <aside class="widge-topbar">
@@ -72,15 +77,15 @@
                     <div class="shop-content-area">
                         <div class="shop-toolbar">
                             <div class="col-md-4 col-sm-4 col-xs-12 nopadding-left text-left pull-right">
-                                <form class="tree-most" method="get">
+                                <form class="tree-most" id="form_order" method="get">
                                     <div class="orderby-wrapper">
                                         <label> Sắp xếp </label>
                                         <select name="orderby" class="orderby">
-                                            <option value="menu_order" selected="selected"> Mặc định </option>
-                                            <option value="popularity"> Mới nhất </option>
-                                            <option value="rating">Sản phảm cũ </option>
-                                            <option value="date">Giá tăng dần </option>
-                                            <option value="price">Giá giảm dần </option>
+                                            <option {{ Request::get('orderby') == 'default' ? 'active' : '' }} value="default" selected="selected"> Mặc định </option>
+                                            <option {{ Request::get('orderby') == 'desc' ? 'active' : '' }} value="desc"> Mới nhất </option>
+                                            <option {{ Request::get('orderby') == 'asc' ? 'active' : '' }} value="asc">Sản phảm cũ </option>
+                                            <option {{ Request::get('orderby') == 'price_asc' ? 'active' : '' }} value="price_desc">Giá tăng dần </option>
+                                            <option {{ Request::get('orderby') == 'price_desc' ? 'active' : '' }} value="price_asc">Giá giảm dần </option>
                                         </select>
                                     </div>
                                 </form>
@@ -182,4 +187,13 @@
         </div>
     </div>
     <!-- Brand Logo Area End -->
+@stop
+@section('script')
+    <script>
+        $(function() {
+            $('.orderby').change(function() {
+                $('#form_order').submit();
+            });
+        });
+    </script>
 @stop

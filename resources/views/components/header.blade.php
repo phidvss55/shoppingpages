@@ -13,7 +13,7 @@
                 <div class="mainmenu">
                     <nav>
                         <ul>
-                            <li class="expand"><a href="{{ route('home') }}"> Trang chủ </a></li>
+                            <li class="expand"><a href="{{ route('home') }}" title="Trang chủ"> Trang chủ </a></li>
                             <li class="expand">
                                 <a href=""> Sản phẩm </a>
                                 <ul class="restrain sub-menu">

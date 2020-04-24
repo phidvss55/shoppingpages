@@ -18,6 +18,7 @@
                     <th> Số điện thoại </th>
                     <th> Tổng tiền </th>
                     <th> Trạng thái </th>
+                    <th> Time </th>
                     <th> Thao Tác </th>
                 </tr>
             </thead>
@@ -36,6 +37,9 @@
                                 @else
                                     <a href="{{ route('admin.get.action.transaction', ['resolve',$transaction->id]) }}" class="label label-default"> Chưa xử lý </a>
                                 @endif
+                            </td>
+                            <td>
+                                {{ $transaction->created_at->format('d-M-Y') }} 
                             </td>
                             <td>
                                 <a class="btn_customer_action" href="{{ route('admin.get.action.transaction', ['delete', $transaction->id]) }}"><i class="fas fa-trash-alt"></i> Delete </a>
