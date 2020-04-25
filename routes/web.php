@@ -47,6 +47,9 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'CheckLoginUser'], function() 
     Route::post('/danh-gia/{id}', 'RatingController@saveRating')->name('post.rating.product');
 });
 
+//quan ly page static
+Route::get('ve-chung-toi', 'PageStaticController@aboutUs')->name('get.about_us');
+
 //quan ly lien he -> if error -> change to web.php outside
 Route::get('lien-he', 'ContactController@getContact')->name('get.contact');
 Route::post('lien-he', 'ContactController@saveContact');

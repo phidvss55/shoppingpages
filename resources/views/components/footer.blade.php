@@ -21,7 +21,7 @@
                         </div>
                         <div class="cakewalk-footer-content">
                             <ul>
-                                <li><a href="#">Về chúng tôi</a></li>
+                                <li><a href="{{ route('get.about_us') }}" target="_blank">Về chúng tôi</a></li>
                                 <li><a href="#">Thông tin giao hàng</a></li>
                                 <li><a href="#">Chính sách vận chuyển</a></li>
                                 <li><a href="#">Điều khoản sử dụng</a></li>
