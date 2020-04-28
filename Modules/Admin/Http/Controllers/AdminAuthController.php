@@ -17,9 +17,13 @@ class AdminAuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admins')->attempt($credentials)) {
-            dd("hello");
-            return redirect()->intended('admin.home');
+            return redirect()->route('admin.home');
         }
         return redirect()->back();
+    }
+
+    public function logoutAdmin() {
+        Auth::guard('admins')->logout();
+        return redirect()->route('admin.login');
     }
 }
