@@ -25,7 +25,7 @@
     </div>
     <!-- breadcrumbs area end -->
     <!-- product-details Area Start -->
-    <div class="product-details-area">
+    <div class="product-details-area" id="content_product" data-id="{{ $productDetail->id }}">
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-5 col-xs-12">
@@ -109,30 +109,35 @@
                             <h3> Đánh giá sản phẩm </h3>
                             <div class="component_rating_content" style="display: flex; align-items: center;border-radius:5px;border:1px solid #dedede">
                                 <div class="rating_item" style="width: 20%; position: relative">
+
                                     <span style="font-size: 100px; display: block; color: #ff9705; margin: 0 auto; text-align: center;">
                                         <i class="fa fa-star" style="margin-left:40px"></i>
-                                        <b style="position: absolute;top: 40%; right: 35%;color:white;font-size:20px;">2.5</b>
+                                        <b style="position: absolute;top: 40%; right: 35%;color:white;font-size:20px;">{{ $age }}</b>
                                     </span>
                                 </div>
                                 <div class="list_rating" style="width: 60%; padding: 20px">
-                                    @for($i = 1; $i <= 5; $i++)
+                                    @foreach($arrayRatings as $key => $arrayRating)
+                                        <?php
+                                            $itemAge = 0;
+                                            $itemAge = round(($arrayRating['total'] / $productDetail->pro_total_rating) * 100);
+                                        ?>
                                         <div class="item_rating" style="display: flex; align-items: center">
                                             <div style="width: 10%; font-size: 14px">
-                                                {{ $i }}<span class="fa fa-star"></span>
+                                                {{ $key }}<span class="fa fa-star"></span>
                                             </div>
                                             <div style="width: 70%; margin: 0 20px;">
                                                 <span style="width: 100%; height: 8px; display: block; border: 1px solid #dedede;border-radius:5px; background-color: #dedede ">
-                                                    <b style="width: 30%; background-color: #f25800;display: block;border-radius:5px;height:100%"></b>
+                                                    <b style="width: {{ $itemAge }}%; background-color: #f25800;display: block;border-radius:5px;height:100%"></b>
                                                 </span>
                                             </div>
                                             <div style="width: 20%">
-                                                <a href=""> 200 đánh giá </a>
+                                                <a href=""> {{ $arrayRating['total'] }} đánh giá ( {{$itemAge}} %) </a>
                                             </div>
                                         </div>
-                                    @endfor
+                                    @endforeach
                                 </div>
                                 <div style="width: 20%">
-                                    <a class="js_rating_action" href="#" style="background:#288ad6;padding:10px;color:white;border-radius:5px">Gửi đánh giá</a>
+                                    <a class="js_rating_action" href="#" style="background:#288ad6;padding:10px;color:white;border-radius:5px"> Thêm đánh giá </a>
                                 </div>
                             </div>
                             <?php
@@ -159,7 +164,7 @@
                                     <textarea name="" class="form-control" id="ra_content" cols="30" rows="3"></textarea>
                                 </div>
                                 <div style="margin-top:15px">
-                                    <a href="{{ route('post.rating.product', $productDetail->id) }}" class="js_rating_product" style="width:200px;background:#288ad6;padding: 5px 10px;color:white;border-radius:5px;">Gưi đánh giá</a>
+                                    <a href="{{ route('post.rating.product', $productDetail->id) }}" class="js_rating_product" style="width:200px;background:#288ad6;padding: 5px 10px;color:white;border-radius:5px;"> Gưi đánh giá </a>
                                 </div>
                             </div>
 
@@ -204,8 +209,10 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         $(function() {
             let listStart = $('.list_start .fa');
+
             listRatingText = {
                 1 : 'Không thích',
                 2 : 'Tạm được',
@@ -243,8 +250,7 @@
                 let content = $('#ra_content').val();
                 let number = $('.number_rating').val();
                 let url =  $(this).attr('href');
-                console.log();
-                
+
                 if(content && number) {
                     $.ajax({
                         url: url,
@@ -257,10 +263,34 @@
                         if(result.code == 1) {
                             alert(' Gửi đánh giá thành công. ');
                             window.reload();
+                        } else {
+                            alert(" Đánh giá không thành công, bạn vui lòng đăng nhập. ");
                         }
                     });
                 }
             });
+
+            //save id product into storage
+            let idProduct = $('#content_product').attr("data-id");
+
+            //get value in store
+            let products = localStorage.getItem('products');
+            if(products == null) {
+                //if not exist -> init
+                arrayProduct = new Array();
+                arrayProduct.push(idProduct);
+                localStorage.setItem('products', JSON.stringify(arrayProduct));
+            } else {
+                //get value id array saved
+                let products = localStorage.getItem("products");
+                //parse to array
+                products = $.parseJSON(products);
+                if (products.indexOf(idProduct) == -1) {
+                    products.push(idProduct);
+                    localStorage.setItem('products', JSON.stringify(products));
+                }
+                console.log(products);
+            }
         });
     </script>
 @stop

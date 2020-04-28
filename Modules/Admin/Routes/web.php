@@ -20,6 +20,7 @@ Route::prefix('admin')->group(function() {
         Route::post('/create', 'AdminCategoryController@store');
         Route::get('/update/{id}', 'AdminCategoryController@edit')->name('admin.get.edit.category');
         Route::post('/update/{id}', 'AdminCategoryController@update');
+        
         Route::get('{action}/{id}', 'AdminCategoryController@action')->name('admin.get.action.category');
     });
 

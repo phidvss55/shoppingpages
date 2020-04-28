@@ -47,6 +47,10 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'CheckLoginUser'], function() 
     Route::post('/danh-gia/{id}', 'RatingController@saveRating')->name('post.rating.product');
 });
 
+Route::group(['prefix' => 'ajax'], function() {
+    Route::post('/view-product', 'HomeController@renderProductView')->name('post.product.view');
+});
+
 //quan ly page static
 Route::get('ve-chung-toi', 'PageStaticController@aboutUs')->name('get.about_us');
 

@@ -1043,6 +1043,9 @@ span.sale-text{
     letter-spacing: 1.1px;
     margin-top: 8px;
     line-height: 22px;
+    max-height: 130px;
+    /* white-space: nowrap; */
+    overflow: hidden;
 }
 .category-info h3 a:hover{
     color: #c2a476;
@@ -3242,11 +3245,6 @@ input#rememberme {
     border-width: 6px;
     margin-top: -6px;
 }
-
-.list_start .rating_active {
-    color: #ff9705;
-}
-
-.pro-rating .active {
+.list_start .rating_active, .pro-rating .active, .cat-rating .active {
     color: #ff9705 !important;
 }

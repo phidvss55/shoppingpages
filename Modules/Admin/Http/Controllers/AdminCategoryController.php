@@ -14,7 +14,7 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::select('id', 'c_name', 'c_title_seo', 'c_active')->get();
+        $categories = Category::select('id', 'c_name', 'c_title_seo', 'c_active', 'c_home')->get();
         $viewData = [
             'categories' => $categories
         ];
@@ -49,6 +49,13 @@ class AdminCategoryController extends Controller
                     $category->delete();
                     $message = ' Xoá dữ liệU thành công. ';
                     break;
+                case 'home':
+                    $category->c_home = $category->c_home == 1 ? 0 : 1;
+                    $category->save();
+                    break;
+                case 'active':
+                    $category->c_active = $category->c_active == 1 ? 0 : 1;
+                    $category->save();
                 default:
                     break;
             }

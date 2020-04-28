@@ -14,8 +14,9 @@
                 <tr>
                     <th>#</th>
                     <th> Tên danh mục </th>
-                    <th> Title Seo </th>
+                    <th> Trang chủ </th>
                     <th> Trạng Thái </th>
+                    <th> Title Seo </th>
                     <th> Thao Tác </th>
                 </tr>
             </thead>
@@ -27,7 +28,10 @@
                             <td>{{ $category->c_name }}</td>
                             <td>{{ $category->c_title_seo }}</td>
                             <td>
-                                <a href="">{{ $category->getStatus($category->c_active)['name'] }}</a>
+                                <a href="{{ route('admin.get.action.category', ['home', $category->id]) }}">{{ $category->getHome($category->c_home)['name'] }}</a>
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.get.action.category', ['active', $category->id]) }}">{{ $category->getStatus($category->c_active)['name'] }}</a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.get.edit.category', ($category->id)) }}">Edit</a>

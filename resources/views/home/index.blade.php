@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <!-- Start home slider -->
     {{-- @include('components.slide') --}}
     <!-- End home slider -->
@@ -76,6 +77,7 @@
         </div>
     </div>
     <!-- product section end -->
+    <div id="product_view"></div>
     <!-- latestpost area start -->
     @if(isset($articleNews))
     <div class="latest-post-area">
@@ -120,525 +122,52 @@
     <div class="block-category">
         <div class="container">
             <div class="row">
+                @if (isset($categoriesHome))
                 <!-- featured block start -->
-                <div class="col-md-4">
-                    <!-- block title start -->
-                    <div class="block-title">
-                        <h2>Featureds</h2>
-                    </div>
-                    <!-- block title end -->
-                    <!-- block carousel start -->
-                    <div class="block-carousel">
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-1.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Donec ac tempus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$235.00 <span class="old-price">$333.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
+                    @foreach ($categoriesHome as $categoryHome)
+                        <div class="col-md-4">
+                            <!-- block title start -->
+                            <div class="block-title">
+                                <h2>{{ $categoryHome->c_name }}</h2>
                             </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-2.jpg" alt="" /></a>
+                            <!-- block title end -->
+                            <!-- block carousel start -->
+                            @if( isset($categoryHome->products ))
+                                <div class="block-carousel">
+                                    @foreach ($categoryHome->products as $product)
+                                    <?php
+                                        $age = 0;
+                                        if($product->pro_total_rating) {
+                                            $age = round($product->pro_total_number / $product->pro_total_rating, 2);
+                                        }
+                                    ?>
+                                    <div class="block-content">
+                                        <!-- single block start -->
+                                        <div class="single-block">
+                                            <div class="block-image pull-left">
+                                                <a href="{{ route('get.detail.product', [$product->pro_slug, $product->id] )}}"><img src="{{ pare_url_file($product->pro_avatar) }}" style="width:170px;height:208px" alt="" /></a>
+                                            </div>
+                                            <div class="category-info">
+                                                <h3><a href="{{ route('get.detail.product', [$product->pro_slug, $product->id] )}}">{{ $product->pro_name }}</a></h3>
+                                                <p>{{ $product->pro_description }}</p>
+                                                <div class="cat-price">{{ number_format($product->pro_price, 0,',','.')}}<span class="old-price">{{ number_format($product->pro_price,0,',','.') }} VNĐ</span></div>
+                                                <div class="cat-rating">
+                                                    @for($i = 1; $i <= 5; $i++)
+                                                        <a href="#"><i class="fa fa-star {{ $i <= $age ? 'active' : '' }}"></i></a>
+                                                    @endfor
+                                                </div>								
+                                            </div>
+                                        </div>
+                                        <!-- single block end -->
+                                    </div>
+                                    @endforeach
                                 </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Primis in faucibus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$205.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
+                            @endif
+                            <!-- block carousel end -->
                         </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-3.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Voluptas nulla</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$99.00 <span class="old-price">$111.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-4.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Cras neque metus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$235.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-5.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Occaecati cupiditate</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$105.00 <span class="old-price">$111.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-6.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Accumsan elit</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$165.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-3.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Pellentesque habitant</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$80.00 <span class="old-price">$110.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-9.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Donec non est</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$560.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                    </div>
-                    <!-- block carousel end -->
-                </div>
+                    @endforeach
                 <!-- featured block end -->
-                <!-- featured block start -->
-                <div class="col-md-4">
-                    <!-- block title start -->
-                    <div class="block-title">
-                        <h2>On Sales</h2>
-                    </div>
-                    <!-- block title end -->
-                    <!-- block carousel start -->
-                    <div class="block-carousel">
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-9.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Voluptas nulla</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$99.00 <span class="old-price">$111.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-10.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Cras neque metus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$235.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-7.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Donec ac tempus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$235.00 <span class="old-price">$333.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-8.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Primis in faucibus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$205.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-11.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Occaecati cupiditate</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$105.00 <span class="old-price">$111.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-12.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Accumsan elit</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$165.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-13.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Pellentesque habitant</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$80.00 <span class="old-price">$110.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-14.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Donec non est</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$560.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                    </div>
-                    <!-- block carousel end -->
-                </div>
-                <!-- featured block end -->
-                <!-- featured block start -->
-                <div class="col-md-4">
-                    <!-- block title start -->
-                    <div class="block-title">
-                        <h2>Populers</h2>
-                    </div>
-                    <!-- block title end -->
-                    <!-- block carousel start -->
-                    <div class="block-carousel">
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-13.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Voluptas nulla</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$99.00 <span class="old-price">$111.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-14.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Cras neque metus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$235.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-11.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Donec ac tempus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$235.00 <span class="old-price">$333.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-12.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Primis in faucibus</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$205.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-4.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Occaecati cupiditate</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$105.00 <span class="old-price">$111.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-9.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Accumsan elit</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$165.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                        <div class="block-content">
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-7.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Pellentesque habitant</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$80.00 <span class="old-price">$110.00</span></div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                            <!-- single block start -->
-                            <div class="single-block">
-                                <div class="block-image pull-left">
-                                    <a href="product-details.html"><img src="img/block-cat/block-3.jpg" alt="" /></a>
-                                </div>
-                                <div class="category-info">
-                                    <h3><a href="product-details.html">Donec non est</a></h3>
-                                    <p>Nunc facilisis sagittis ullamcorper...</p>
-                                    <div class="cat-price">$560.00</div>
-                                    <div class="cat-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                    </div>								
-                                </div>
-                            </div>
-                            <!-- single block end -->
-                        </div>
-                    </div>
-                    <!-- block carousel end -->
-                </div>
-                <!-- featured block end -->
+                @endif
             </div>
         </div>
     </div>
@@ -686,3 +215,37 @@
     </div>
     <!-- Brand Logo Area End -->
 @stop
+
+@section('script')
+    <script>
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(function() {
+            let routeRenderProduct = '{{ route("post.product.view") }}';
+            $(document).on('scroll', function() {
+                checkRender = false;
+                if($(window).scrollTop() > 150 && checkRender == false) {
+                    checkRender = true;
+                    let products = localStorage.getItem('products');
+                    products = $.parseJSON(products);
+
+                    if(products.length > 0) {
+                        $.ajax({
+                            url: routeRenderProduct,
+                            method: "POST",
+                            data: { id : products},
+                            success: function(result) {
+                                console.log(result);
+                                $('#product_view').html('').append(result.data);
+                            }
+                        });
+                    }                    
+                }
+            });
+        });
+    </script>
+@endsection
