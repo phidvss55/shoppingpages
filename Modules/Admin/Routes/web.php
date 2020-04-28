@@ -10,8 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix('authenticate/login')->group( function() {
+    Route::get('/login', 'AdminAuthController@getLogin')->name('admin.login');
+    Route::post('/login', 'AdminAuthController@postLogin');
+});
 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->middleware('CheckLoginAdmin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.home');
 
     Route::group(['prefix' => 'category'], function() {
