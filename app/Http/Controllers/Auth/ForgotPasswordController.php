@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {
-    //
+    public function getFormResetPassword() {
+        return view('auth.passwords.reset');
+    }
 }

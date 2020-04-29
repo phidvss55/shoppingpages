@@ -37,7 +37,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ route('home') }}"> Đăng xuất </a></li>
+                        <li><a href="{{ route('get.logout.user') }}"> Đăng xuất </a></li>
                     </ul>
                     <form class="navbar-form navbar-right">
                         <input type="text" class="form-control" placeholder="Search...">
@@ -54,6 +54,9 @@
                         </li>
                         <li class="{{ \Request::route()->getName() == 'user.update.infor' ? 'active' : '' }}"><a href="{{ route('user.update.infor') }}"> Cập nhật thông tin </a></li>
                         <li class="{{ \Request::route()->getName() == 'user.update.password' ? 'active' : '' }}"><a href="{{ route('user.update.password') }}"> Cập nhật mật khẩu </a></li>
+                        <li class="{{ \Request::route()->getName() == 'user.get.product_care' ? 'active' : '' }}"><a href="{{ route('user.get.product_care') }}"> Sản phẩm vừa xem </a></li>
+                        <li class="{{ \Request::route()->getName() == 'user.get.product.pay' ? 'active' : '' }}"><a href="{{ route('user.get.product.pay') }}"> Sản phẩm bán chạy </a></li>
+                        <li class="{{ \Request::route()->getName() == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}"> Quay lại </a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

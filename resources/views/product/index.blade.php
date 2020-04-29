@@ -16,7 +16,9 @@
                                 <a href=""> Trang chủ </a>
                                 <span><i class="fa fa-angle-right"></i></span>
                             </li>
-                            <li class="category3"><span> {{ $cateProduct->c_name }} </span></li>
+                            @if( isset($cateProduct ))
+                                <li class="category3"><span> {{ $cateProduct->c_name }} </span></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

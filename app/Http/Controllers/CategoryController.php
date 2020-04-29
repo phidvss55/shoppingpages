@@ -78,6 +78,19 @@ class CategoryController extends FrontendController
             ];
             return view('product.index', $viewData);
         }
+
+        if (isset($request->k)) {
+            $products = Product::where([
+                'pro_active' => Product::STATUS_PUBLIC
+            ])->where('pro_name', 'like', '%'.$request->k.'%');
+
+            $products = $products->paginate(6);
+            $viewData = [
+                'products'      => $products,
+            ];
+            return view('product.index', $viewData);
+        }
+
         return redirect('/');
     }
 }

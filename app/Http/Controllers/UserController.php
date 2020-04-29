@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestPassword;
+use App\Model\Product;
 use App\Model\Transaction;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends FrontendController
 {
@@ -42,7 +45,23 @@ class UserController extends FrontendController
         return view('user.password');
     }
 
-    public function saveUpdatePassword(Request $request) {
+    public function saveUpdatePassword(RequestPassword $requestPassword) {
+        if(Hash::check($requestPassword->password_old, get_data_user('web', 'password'))) {
+            $user = User::find(get_data_user('web'));
+            $user->password = Hash::make($requestPassword->password);
+            $user->save();
+            return redirect()->back()->with('success', ' Cập nhật mật khẩu thành công. ');
+        }
 
+        return redirect()->back()->with('danger', 'Mật khẩu cũ không đúng');
+    }
+
+    public function getProductPay() {
+        $products = Product::orderBy('pro_pay', 'DESC')->limit(10)->get();
+        return view('user.product', compact('products'));
+    }
+
+    public function getProductCare() {
+        return view('user.product_care');
     }
 }
