@@ -130,3 +130,16 @@ body {
   font-size: 25px;
   margin: 0;
 }
+
+/* Form password */
+.main .pwd-change .form-group {
+  position: relative;
+}
+
+.main .pwd-change .form-group a.see-pwd {
+  position: absolute;
+  top: 49%;
+  right: 2%;
+  font-size: 20px;
+  color: #353636;
+}

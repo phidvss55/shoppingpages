@@ -228,7 +228,7 @@
                             <a href="#"><i class="fa fa-align-right"></i></a>
                             <ul class="restrain language" style="width: 200px">
                                 @if(Auth::check())
-                                    <li><a href=""> Quản lý </a></li>
+                                    <li><a href="{{ route('user.dashboard') }}" title=" Quản lý người dùng"> Quản lý </a></li>
                                     <li><a href=""> Sản phẩm yêu thích </a></li>
                                     <li><a href=""> Giỏ hàng </a></li>
                                     <li><a href="{{ route('get.logout.user') }}"> Thoát</a></li>

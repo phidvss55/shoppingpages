@@ -57,3 +57,15 @@ Route::get('ve-chung-toi', 'PageStaticController@aboutUs')->name('get.about_us')
 //quan ly lien he -> if error -> change to web.php outside
 Route::get('lien-he', 'ContactController@getContact')->name('get.contact');
 Route::post('lien-he', 'ContactController@saveContact');
+
+
+//Route control User
+Route::group(['prefix'  => 'user', 'middleware' => 'CheckLoginUser'], function() {
+    Route::get('/', 'UserController@index')->name('user.dashboard');
+
+    Route::get('/infor', 'UserController@updateInfo')->name('user.update.infor');
+    Route::post('/infor', 'UserController@saveUpdateInfo');
+
+    Route::get('/password', 'UserController@updatePassword')->name('user.update.password');
+    Route::post('/password', 'UserController@saveUpdatePassword');
+});

@@ -27,7 +27,21 @@
                     @include('components.article')
                 </div>
                 <div class="col-sm-4">
-                    Right content, can put an banner or ads
+                    <div class="taglstbox">
+                        <div class="caption">
+                            <div class="lead"> Từ khoá phổ biến </div>
+                        </div>
+                        <ul class="nav">
+                            <li><a href="#" class="hastag"> Đội tuyển Việt Nam </a></li>
+                            <li><a href="#" class="hastag"> Việt Nam </a></li>
+                            <li><a href="#" class="hastag"> Máy Tính </a></li>
+                            <li><a href="#" class="hastag"> Laptop </a></li>
+                            <li><a href="#" class="hastag"> Vi tính </a></li>
+                            <li><a href="#" class="hastag"> Phụ Kiện Chính Hãng </a></li>
+                            <li><a href="#" class="hastag"> Điện Thoại </a></li>
+                            <li><a href="#" class="hastag"> Tay Nghe </a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>	

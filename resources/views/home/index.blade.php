@@ -76,6 +76,7 @@
             <!-- our-product area end -->	
         </div>
     </div>
+    @include('components.product_suggest')
     <!-- product section end -->
     <div id="product_view"></div>
     <!-- latestpost area start -->
